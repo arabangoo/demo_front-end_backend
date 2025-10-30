@@ -1,4 +1,4 @@
-# 📄 기존 HTML/CSS/JS 프론트엔드 구조 상세 분석
+# 📄 기존 HTML/CSS/JS 프론트엔드 구조 (arabangoo.com)
 
 > **프로젝트**: arabangoo.com AI 서비스  
 > **주제**: 기존 HTML/CSS/JavaScript 아키텍처 심층 분석  
