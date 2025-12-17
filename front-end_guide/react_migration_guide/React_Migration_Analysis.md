@@ -1304,165 +1304,7 @@ const RestaurantSection = () => {
 
 ---
 
-## 9. React 학습 로드맵
-
-### Phase 1: 기초 (1-2주)
-
-**학습 목표:**
-- JSX 문법 이해
-- 컴포넌트와 Props 개념
-- 기본 Hooks (useState, useEffect)
-
-**실습 프로젝트:**
-
-```jsx
-// 간단한 카운터 앱
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>증가</button>
-      <button onClick={() => setCount(count - 1)}>감소</button>
-    </div>
-  );
-};
-```
-
-**AWS 연계 실습:**
-
-```jsx
-// S3 버킷 목록 표시
-const S3BucketList = () => {
-  const [buckets, setBuckets] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('YOUR_API_GATEWAY_URL/buckets')
-      .then(res => res.json())
-      .then(data => {
-        setBuckets(data);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <div>로딩 중...</div>;
-
-  return (
-    <div>
-      <h2>S3 Buckets</h2>
-      <ul>
-        {buckets.map(bucket => (
-          <li key={bucket.Name}>{bucket.Name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-```
-
-### Phase 2: 중급 (2-3주)
-
-**학습 목표:**
-- 커스텀 Hooks 만들기
-- Context API로 전역 상태 관리
-- React Router로 라우팅
-- 폼 처리와 유효성 검사
-
-**실습 프로젝트:**
-
-```jsx
-// 커스텀 Hook
-const useAPI = (url) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setData(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError(err);
-        setLoading(false);
-      });
-  }, [url]);
-
-  return { data, loading, error };
-};
-
-// 사용
-const EC2InstanceList = () => {
-  const { data, loading, error } = useAPI('YOUR_API_URL/ec2-instances');
-
-  if (loading) return <div>로딩 중...</div>;
-  if (error) return <div>에러: {error.message}</div>;
-
-  return (
-    <div>
-      {data.map(instance => (
-        <div key={instance.InstanceId}>
-          <h3>{instance.InstanceId}</h3>
-          <p>상태: {instance.State.Name}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-```
-
-### Phase 3: 고급 (3-4주)
-
-**학습 목표:**
-- 성능 최적화 (useMemo, useCallback, React.memo)
-- 상태 관리 라이브러리 (Redux, Zustand, Recoil)
-- 테스트 작성 (Jest, React Testing Library)
-- TypeScript와 React
-
-**실습 프로젝트:**
-
-```jsx
-// 성능 최적화
-const ExpensiveComponent = React.memo(({ data }) => {
-  return (
-    <div>
-      {data.map(item => (
-        <div key={item.id}>{item.name}</div>
-      ))}
-    </div>
-  );
-});
-
-const ParentComponent = () => {
-  const [count, setCount] = useState(0);
-  const [items, setItems] = useState([]);
-
-  // useMemo로 비싼 계산 캐싱
-  const expensiveValue = useMemo(() => {
-    return items.reduce((sum, item) => sum + item.value, 0);
-  }, [items]);
-
-  // useCallback으로 함수 캐싱
-  const handleClick = useCallback(() => {
-    console.log('Clicked!');
-  }, []);
-
-  return (
-    <div>
-      <button onClick={() => setCount(count + 1)}>Count: {count}</button>
-      <ExpensiveComponent data={items} />
-    </div>
-  );
-};
-```
-
----
-
-## 10. 실무 적용 가이드
+## 9. 실무 적용 가이드
 
 ### 기존 프로젝트 React로 마이그레이션 전략
 
@@ -1566,7 +1408,7 @@ const cloudfrontUrl = process.env.REACT_APP_CLOUDFRONT_URL;
 
 ---
 
-## 11. 결론 및 권장사항
+## 10. 결론 및 권장사항
 
 ### React로 전환해야 하는 이유 (요약)
 
@@ -1611,3 +1453,4 @@ const cloudfrontUrl = process.env.REACT_APP_CLOUDFRONT_URL;
 | **생태계** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **디버깅** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **미래 지향성** | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+
